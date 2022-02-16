@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+numberOfSourceFilesChanged=`git diff --name-only --cached --relative src | wc -l`
+if [ $numberOfSourceFilesChanged -gt 0 ];
+then
+    npm run lint
+fi
